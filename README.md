@@ -1,5 +1,7 @@
 # LLM Subscription Limits
 
+[![Open in Home Assistant Marketplace](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=y-decimal&repository=ha-llm-subscription-limit-integration&category=integration)
+
 Prototype Home Assistant custom integration for monitoring LLM subscription usage.
 Only OpenCode Go is implemented. Other providers are future work, not promised.
 
