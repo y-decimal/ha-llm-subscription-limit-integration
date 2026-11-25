@@ -1,0 +1,26 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "OpenCode Go",
+        "description": "Enter a key entitled to use OpenCode Go.",
+        "data": {"api_key": "OpenCode Go API key"},
+        "data_description": {"api_key": "A personal or eligible service account key from OpenCode Console."}
+      },
+      "reauth_confirm": {
+        "title": "Reauthenticate OpenCode Go",
+        "data": {"api_key": "OpenCode Go API key"},
+        "data_description": {"api_key": "Enter a valid replacement API key."}
+      }
+    },
+    "error": {
+      "invalid_auth": "The API key was rejected.",
+      "no_subscription": "This key does not have an OpenCode Go subscription.",
+      "cannot_connect": "Unable to retrieve usage data. Try again later."
+    },
+    "abort": {
+      "already_configured": "OpenCode Go is already configured.",
+      "reauth_successful": "Authentication updated successfully."
+    }
+  }
+}

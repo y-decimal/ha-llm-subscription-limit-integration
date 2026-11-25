@@ -1,0 +1,11 @@
+{
+  "domain": "llm_subscription_limits",
+  "name": "LLM Subscription Limits",
+  "version": "0.1.0",
+  "config_flow": true,
+  "documentation": "https://github.com/y-decimal/ha-llm-subscription-limit-integration",
+  "issue_tracker": "https://github.com/y-decimal/ha-llm-subscription-limit-integration/issues",
+  "codeowners": ["@y-decimal"],
+  "requirements": [],
+  "iot_class": "cloud_polling"
+}
