@@ -1,28 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <defs>
-    <linearGradient id="gauge" x1="24" y1="32" x2="210" y2="222" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#19ddbd"/>
-      <stop offset=".48" stop-color="#09bddd"/>
-      <stop offset="1" stop-color="#1459e6"/>
+    <linearGradient id="outer" x1="42" y1="38" x2="213" y2="215" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22dbc1"/>
+      <stop offset=".45" stop-color="#0dcbd0"/>
+      <stop offset=".72" stop-color="#158cf3"/>
+      <stop offset="1" stop-color="#1752d9"/>
     </linearGradient>
+    <linearGradient id="inner" x1="48" y1="49" x2="197" y2="199" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07c9c9"/>
+      <stop offset="1" stop-color="#1388eb"/>
+    </linearGradient>
+    <linearGradient id="needle" x1="124" y1="134" x2="170" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0dd1bd"/>
+      <stop offset="1" stop-color="#1495ef"/>
+    </linearGradient>
+    <mask id="node-clearance">
+      <rect width="256" height="256" fill="white"/>
+      <path d="M 190 194 C 193 185 202 186 202 178 C 202 172 207 166 210 160"
+            fill="none" stroke="black" stroke-width="18" stroke-linecap="round"/>
+      <circle cx="210" cy="148" r="14" fill="black"/>
+      <circle cx="187" cy="199" r="14" fill="black"/>
+    </mask>
   </defs>
-  <!-- Broken outer ring leaves room for the connected nodes. -->
-  <g fill="none" stroke="url(#gauge)" stroke-width="14" stroke-linecap="round">
-    <path d="M 51 187 A 99 99 0 0 1 194 54"/>
-    <path d="M 204 66 A 99 99 0 0 1 226 139"/>
-    <path d="M 195 201 A 99 99 0 0 1 66 207"/>
+
+  <!-- The top/left arc and blue right/bottom arc follow one circular track. -->
+  <g fill="none" stroke="url(#outer)" stroke-width="13" stroke-linecap="round" mask="url(#node-clearance)">
+    <path d="M 56 177 A 89 89 0 0 1 176 65"/>
+    <path d="M 185 79 A 89 89 0 0 1 202 143"/>
+    <path d="M 198 180 A 89 89 0 0 1 76 195"/>
   </g>
-  <g fill="none" stroke-linecap="round" stroke-width="14">
-    <path d="M 62 126 A 66 66 0 0 1 126 62" stroke="#08bfd0"/>
-    <path d="M 65 151 A 66 66 0 0 0 105 190" stroke="#b6e5f5"/>
-    <path d="M 130 194 A 66 66 0 0 0 194 130" stroke="#168de9"/>
+
+  <!-- Three separate inner arcs preserve the generous gaps of the reference. -->
+  <g fill="none" stroke-width="13" stroke-linecap="round">
+    <path d="M 65 125 A 61 61 0 0 1 125 65" stroke="#08c1d0"/>
+    <path d="M 66 146 A 61 61 0 0 0 106 186" stroke="#c3e9f8"/>
+    <path d="M 129 188 A 61 61 0 0 0 188 129" stroke="url(#inner)"/>
   </g>
-  <!-- Needle and pivot are independent shapes for crisp scaling. -->
-  <path d="M 130 116 L 170 81 Q 177 75 173 85 L 143 132 Z" fill="#08c8c4"/>
-  <circle cx="128" cy="128" r="14" fill="#1769dd"/>
-  <!-- Rounded, linked nodes echo the original connection motif. -->
-  <path d="M 199 191 C 207 185 210 178 215 165" fill="none"
-        stroke="#168de9" stroke-width="12" stroke-linecap="round"/>
-  <circle cx="218" cy="155" r="11" fill="#12c7ca"/>
-  <circle cx="191" cy="199" r="11" fill="#1769dd"/>
+
+  <!-- A tapered needle emerges from the pivot, as in the original mark. -->
+  <path d="M 126 117 L 165 91 Q 171 87 168 94 L 144 130 Z" fill="url(#needle)"/>
+  <circle cx="123" cy="127" r="10" fill="#1769df"/>
+
+  <!-- Linked nodes are offset outside the ring and separated from it. -->
+  <path d="M 190 194 C 193 185 202 186 202 178 C 202 172 207 166 210 160"
+        fill="none" stroke="#158ced" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="210" cy="148" r="10" fill="#18c9c8"/>
+  <circle cx="187" cy="199" r="10" fill="#1765dc"/>
 </svg>
