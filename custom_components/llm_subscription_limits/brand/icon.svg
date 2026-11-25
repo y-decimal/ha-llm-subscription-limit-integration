@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="gauge" x1="24" y1="32" x2="210" y2="222" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19ddbd"/>
+      <stop offset=".48" stop-color="#09bddd"/>
+      <stop offset="1" stop-color="#1459e6"/>
+    </linearGradient>
+  </defs>
+  <!-- Broken outer ring leaves room for the connected nodes. -->
+  <g fill="none" stroke="url(#gauge)" stroke-width="14" stroke-linecap="round">
+    <path d="M 51 187 A 99 99 0 0 1 194 54"/>
+    <path d="M 204 66 A 99 99 0 0 1 226 139"/>
+    <path d="M 195 201 A 99 99 0 0 1 66 207"/>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-width="14">
+    <path d="M 62 126 A 66 66 0 0 1 126 62" stroke="#08bfd0"/>
+    <path d="M 65 151 A 66 66 0 0 0 105 190" stroke="#b6e5f5"/>
+    <path d="M 130 194 A 66 66 0 0 0 194 130" stroke="#168de9"/>
+  </g>
+  <!-- Needle and pivot are independent shapes for crisp scaling. -->
+  <path d="M 130 116 L 170 81 Q 177 75 173 85 L 143 132 Z" fill="#08c8c4"/>
+  <circle cx="128" cy="128" r="14" fill="#1769dd"/>
+  <!-- Rounded, linked nodes echo the original connection motif. -->
+  <path d="M 199 191 C 207 185 210 178 215 165" fill="none"
+        stroke="#168de9" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="218" cy="155" r="11" fill="#12c7ca"/>
+  <circle cx="191" cy="199" r="11" fill="#1769dd"/>
+</svg>
