@@ -21,6 +21,23 @@ One Go account is supported per Home Assistant instance in this prototype:
 the usage API does not provide an immutable account ID. Reauthentication
 retains sensor identities. Other providers will use separate configuration entries.
 
+## Settings and controls
+
+Each provider is a **device** (`OpenCode Go`) holding its usage sensors.
+Integration-wide settings live on a separate **service device**,
+`LLM Subscription Limits`, so they are not named after one provider:
+
+| Entity | What it does |
+|---|---|
+| `number.llm_subscription_limits_poll_interval` | Minutes between polls, 1–60, default 5. Applies to every provider and is stored in the integration's own settings file, so it survives restarts. |
+| `button.llm_subscription_limits_refresh_now` | Fetches every provider immediately and restarts the interval. |
+
+Both are `CONFIG` entities, so they appear under *Configuration* on the device
+page rather than as primary controls. The interval is global on purpose: a
+single clock matches how people think about "how often does this update". If a
+provider later needs its own cadence, an optional per-provider override can be
+added on its device without moving the global value.
+
 ## Install
 
 Add this repository by URL as an Integration custom repository in Marketplace,

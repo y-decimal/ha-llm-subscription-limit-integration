@@ -14,10 +14,11 @@ from .providers.opencode_go import AuthenticationError, EntitlementError, OpenCo
 class GoCoordinator(DataUpdateCoordinator):
     """Maintain one provider's independent data and errors."""
 
-    def __init__(self, hass, entry: ConfigEntry, client: OpenCodeGoClient) -> None:
+    def __init__(self, hass, entry: ConfigEntry, client: OpenCodeGoClient,
+                 update_interval: timedelta) -> None:
         super().__init__(hass, logger=logging.getLogger(__name__),
                          name=f"{DOMAIN}_opencode_go", config_entry=entry,
-                         update_interval=timedelta(minutes=5))
+                         update_interval=update_interval)
         self.client = client
 
     async def _async_update_data(self):
