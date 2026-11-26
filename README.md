@@ -59,8 +59,10 @@ shipped change needs a release. The tag and `manifest.json` `version` must match
 3. Create a release tagged `vX.Y.Z` on `main`.
 
 Versions follow semantic versioning: patch for fixes, minor for new providers or
-options, major for breaking config changes. The card repository is versioned the
-same way, independently of this one.
+options, major for breaking config changes. Bump only when shipped behaviour
+changes — documentation, CI and metadata commits do not need a release, so the
+version keeps meaning something. The card repository is versioned the same way,
+independently of this one.
 
 ## Development
 
