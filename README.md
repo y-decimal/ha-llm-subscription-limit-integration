@@ -31,6 +31,7 @@ Integration-wide settings live on a separate **service device**,
 |---|---|
 | `number.llm_subscription_limits_poll_interval` | Minutes between polls, 1–60, default 5. Applies to every provider and is stored in the integration's own settings file, so it survives restarts. |
 | `button.llm_subscription_limits_refresh_now` | Fetches every provider immediately and restarts the interval. |
+| `sensor.llm_subscription_limits_next_refresh` | Read-only timestamp of the next scheduled poll. The refresh badge counts down from it, so the schedule has a single source of truth. |
 
 Both are `CONFIG` entities, so they appear under *Configuration* on the device
 page rather than as primary controls. The interval is global on purpose: a

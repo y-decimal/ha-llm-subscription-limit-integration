@@ -6,6 +6,7 @@ import logging
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
+from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
 from .providers.opencode_go import AuthenticationError, EntitlementError, OpenCodeGoClient, ProviderError
@@ -20,13 +21,17 @@ class GoCoordinator(DataUpdateCoordinator):
                          name=f"{DOMAIN}_opencode_go", config_entry=entry,
                          update_interval=update_interval)
         self.client = client
+        self.last_refresh_at = None
 
     async def _async_update_data(self):
         try:
-            return await self.client.fetch()
+            result = await self.client.fetch()
         except AuthenticationError as err:
             raise ConfigEntryAuthFailed("OpenCode Go API key rejected") from err
         except EntitlementError as err:
             raise UpdateFailed("OpenCode Go subscription is not available for this key") from err
         except ProviderError as err:
             raise UpdateFailed("OpenCode Go usage request failed") from err
+        # Only a real round trip moves the clock the UI counts down from.
+        self.last_refresh_at = dt_util.utcnow()
+        return result
