@@ -48,6 +48,20 @@ Actual entity IDs can differ: select the newly created entity in the UI.
 The card derives its forecast from the sensor state and estimated window start;
 history fills as Home Assistant records readings.
 
+## Releasing
+
+Marketplace shows the latest **GitHub release tag**, not the commit hash, so every
+shipped change needs a release. The tag and `manifest.json` `version` must match
+(a leading `v` in the tag is fine).
+
+1. Bump `version` in `custom_components/llm_subscription_limits/manifest.json`.
+2. Commit and push to `main`.
+3. Create a release tagged `vX.Y.Z` on `main`.
+
+Versions follow semantic versioning: patch for fixes, minor for new providers or
+options, major for breaking config changes. The card repository is versioned the
+same way, independently of this one.
+
 ## Development
 
 The provider adapter owns API access and normalization; each future provider
